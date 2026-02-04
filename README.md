@@ -1,3 +1,7 @@
+
+
+# email
+
 To send emails with Python, you primarily use the built-in smtplib library to interact with an SMTP server and the email package to construct the message content. 
 Prerequisites
 An email account with SMTP credentials (username and password).
@@ -10,7 +14,7 @@ import ssl
 from email.message import EmailMessage
 import getpass # To securely ask for the password in the terminal
 
-# --- Configuration ---
+## --- Configuration ---
 ```python
 sender_email = "your_email@gmail.com"  # Replace with your email
 receiver_email = "recipient_email@example.com" # Replace with the recipient's email
@@ -18,7 +22,7 @@ password = getpass.getpass("Enter your email password: ") # Prompt for password 
 smtp_server = "smtp.gmail.com"
 port = 465  # For SSL
 ```
-# --- Create the email message ---
+## --- Create the email message ---
 ```python
 msg = EmailMessage()
 msg.set_content("This is the body of the email.") # The plain text content
@@ -26,7 +30,7 @@ msg['Subject'] = "A test email from Python"
 msg['From'] = sender_email
 msg['To'] = receiver_email
 ```
-# --- Send the email ---
+## --- Send the email ---
 ```python
 try:
     # Create a secure SSL context
