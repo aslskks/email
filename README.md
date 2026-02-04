@@ -11,20 +11,23 @@ from email.message import EmailMessage
 import getpass # To securely ask for the password in the terminal
 
 # --- Configuration ---
+```python
 sender_email = "your_email@gmail.com"  # Replace with your email
 receiver_email = "recipient_email@example.com" # Replace with the recipient's email
 password = getpass.getpass("Enter your email password: ") # Prompt for password securely
 smtp_server = "smtp.gmail.com"
 port = 465  # For SSL
-
+```
 # --- Create the email message ---
+```python
 msg = EmailMessage()
 msg.set_content("This is the body of the email.") # The plain text content
 msg['Subject'] = "A test email from Python"
 msg['From'] = sender_email
 msg['To'] = receiver_email
-
+```
 # --- Send the email ---
+```python
 try:
     # Create a secure SSL context
     context = ssl.create_default_context()
@@ -38,5 +41,6 @@ except smtplib.SMTPAuthenticationError:
     print("Authentication error. Check your email and password, or App Password settings if using Gmail.")
 except Exception as e:
     print(f"An error occurred: {e}")
+```
 ssl.create_default_context(): This is highly recommended as it loads the system's trusted certificates and handles security protocols, ensuring a secure connection.
 Security Note: It is best practice to use environment variables or a secrets manager to store sensitive information like passwords, rather than hardcoding them in the script. 
